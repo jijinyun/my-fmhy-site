@@ -1,0 +1,3 @@
+# 忽略 VitePress 缓存
+.vitepress/cache/
+.vitepress/dist/ # 同时建议忽略构建输出目录
