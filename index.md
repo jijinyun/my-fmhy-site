@@ -13,8 +13,6 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
-      1111
-      
 
 features:
   - title: Feature A
