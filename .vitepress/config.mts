@@ -17,7 +17,7 @@ export default {
     // 顶部导航栏
     nav: [
       { text: '首页', link: '/' },
-      { text: '分类', link: '/categories' },
+      { text: '分类', link: '/categories/' },
       { text: '更新日志', link: '/posts' },
       { text: '投稿指南', link: '/contributing' },
       { text: '关于本站', link: '/about' }
@@ -30,11 +30,13 @@ export default {
 
     // 侧边栏导航
     sidebar: {
+      // 当访问 /categories/ 路径时，显示这个侧边栏
       '/categories/': [
         {
           text: '资源分类',
           items: [
             { text: '🛡️ 网络安全', link: '/categories/security' },
+            { text: '🖥️ 系统工具', link: '/categories/system' },
             { text: '🤖 人工智能', link: '/categories/ai' },
             { text: '🎬 影音娱乐', link: '/categories/media' },
             { text: '🎮 游戏世界', link: '/categories/gaming' },
