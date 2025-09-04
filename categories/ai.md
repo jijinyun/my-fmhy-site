@@ -15,13 +15,13 @@ description: '最全面的免费AI工具导航！覆盖国产大模型、开源�
 | :--- | :--- | :--- |
 | [DeepSeek Chat](https://chat.deepseek.com) | 深度求索推出的免费AI助手，128K长上下文，响应速度快 | `https://chat.deepseek.com` |
 | [Kimi Chat](https://kimi.moonshot.cn) | 月之暗面出品，支持超长文本阅读与文档解读 | `https://kimi.moonshot.cn` |
-| [元宝 AI](https://www.yuanbao.ai) | 一字一元团队开发，千亿参数大模型，对话体验优秀 | `https://www.yuanbao.ai` |
+| [腾讯元宝](https://yuanbao.tencent.com) | 腾讯推出的大模型对话助手 | `https://yuanbao.tencent.com` |
 | [通义千问](https://tongyi.aliyun.com/qianwen) | 阿里巴巴推出的大模型对话助手 | `https://tongyi.aliyun.com/qianwen` |
-| [文心一言](https://yyan.baidu.com) | 百度推出的知识增强大语言模型 | `https://yyan.baidu.com` |
+| [文心一言](https://yiyan.baidu.com) | 百度推出的知识增强大语言模型 | `https://yiyan.baidu.com` |
 | [智谱清言](https://chatglm.cn) | 基于清华智谱AI大模型，逻辑推理能力突出 | `https://chatglm.cn` |
 | [讯飞星火](https://xinghuo.xfyun.cn) | 科大讯飞推出的认知大模型 | `https://xinghuo.xfyun.cn` |
 | [商量](https://www.zhihu.com/ai) | 知乎旗下的AI对话助手，融合社区问答数据 | `https://www.zhihu.com/ai` |
-| **腾讯混元** | 腾讯推出的大模型，微信小程序可体验 | 微信搜索「腾讯混元」 |
+| [腾讯混元](https://hunyuan.tencent.com) | 腾讯推出的大模型 | `https://hunyuan.tencent.com` |
 | [百川大模型](https://www.baichuan.ai) | 百川智能推出的开源可商用大模型 | `https://www.baichuan.ai` |
 
 ## 🎯 开源大模型与框架
