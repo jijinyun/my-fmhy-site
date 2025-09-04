@@ -1,0 +1,35 @@
+/* Emoji筛选样式 */
+.emoji-star,
+.emoji-opensource,
+.emoji-external {
+  display: inline-block;
+  margin-right: 0.25rem;
+  font-style: normal;
+}
+
+/* 表格样式调整 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--vp-c-border);
+}
+
+th {
+  background-color: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* 筛选动画 */
+tr {
+  transition: opacity 0.3s ease;
+}
+
+tr.filtered-out {
+  opacity: 0.3;
+}

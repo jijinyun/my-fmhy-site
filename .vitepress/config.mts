@@ -9,6 +9,7 @@ export default {
   // 网站的描述
   description: '一份由社区驱动，专注于收录优质、合法、高效中文工具与资源的导航指南。',
 
+
   // 主题配置
   themeConfig: {
     // 网站logo
