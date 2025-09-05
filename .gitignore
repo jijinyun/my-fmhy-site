@@ -3,9 +3,10 @@ node_modules/
 .npm
 .yarn-integrity
 
-# 构建输出
+# 构建输出和缓存
 .vitepress/dist/
 .vitepress/cache/
+.cache/
 
 # 环境变量
 .env
@@ -37,13 +38,12 @@ Thumbs.db
 # 临时文件
 .tmp/
 .temp/
+.deps/
 
 # 可选的包管理器文件
-# 如果你使用 npm，取消注释下一行
+# 根据你使用的包管理器取消注释
 package-lock.json
-# 如果你使用 yarn，取消注释下一行
 # yarn.lock
-# 如果你使用 pnpm，取消注释下一行
 # pnpm-lock.yaml
 
 # 本地调试文件
