@@ -10,6 +10,12 @@ export default {
   // 网站的描述
   description: '一份由社区驱动，专注于收录优质、合法、高效中文工具与资源的导航指南。',
 
+  // 新增：sitemap 配置
+  sitemap: {
+    hostname: 'https://www.toolpie.cn', // <<< 重要：替换为你的实际域名！
+    lastmodDateOnly: false, // 可选：包含具体时间而不仅仅是日期
+    // 其他可选配置...
+  },
 
   // 主题配置
   themeConfig: {
