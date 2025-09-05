@@ -1,7 +1,6 @@
 ---
 title: '🤖 人工智能'
 description: '最全面的免费AI工具导航！覆盖国产大模型、开源项目、AI绘画、编程辅助、语音克隆与学习资源。'
-showEmojiFilter: true
 ---
 
 # 🤖 人工智能资源导航
@@ -14,7 +13,7 @@ showEmojiFilter: true
 
 | 名称 | 描述 | 链接 |
 | :--- | :--- | :--- |
-| <span class="emoji-star">⭐</span>**DeepSeek Chat** | 深度求索推出的免费AI助手，128K长上下文，响应速度快 | [https://chat.deepseek.com](https://chat.deepseek.com) |
+| **DeepSeek Chat** | 深度求索推出的免费AI助手，128K长上下文，响应速度快 | [https://chat.deepseek.com](https://chat.deepseek.com) |
 | **Kimi Chat** | 月之暗面出品，支持超长文本阅读与文档解读 | [https://kimi.moonshot.cn](https://kimi.moonshot.cn) |
 | **腾讯元宝** | 腾讯推出的大模型对话助手 | [https://yuanbao.tencent.com](https://yuanbao.tencent.com) |
 | **通义千问** | 阿里巴巴推出的大模型对话助手 | [https://tongyi.aliyun.com/qianwen](https://tongyi.aliyun.com/qianwen) |
