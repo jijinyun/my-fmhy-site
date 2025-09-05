@@ -1,4 +1,5 @@
 // .vitepress/config.mts
+import { defineConfig } from 'vitepress'
 export default {
   // 基础路径，根目录就是 '/'
   base: '/',
