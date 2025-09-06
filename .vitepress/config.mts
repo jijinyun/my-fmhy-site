@@ -1,96 +1,84 @@
 // .vitepress/config.mts
 import { defineConfig } from 'vitepress'
-export default {
-  // 基础路径，根目录就是 '/'
-  base: '/',
-  // 网站的语言
-  lang: 'zh-CN',
-  // 网站的标题
-  title: '工具派',
-  // 网站的描述
-  description: '一份由社区驱动，专注于收录优质、合法、高效中文工具与资源的导航指南。',
+import templateConfig from './config.template.mjs'
 
-  // 新增：sitemap 配置
-  sitemap: {
-    hostname: 'https://www.toolpie.cn', // <<< 重要：替换为你的实际域名！
-    lastmodDateOnly: false, // 可选：包含具体时间而不仅仅是日期
-    // 其他可选配置...
-  },
-
-  // 主题配置
-  themeConfig: {
-    // 网站logo
-    logo: '/logo.png', 
-
-    // 顶部导航栏
-    nav: [
-      { text: '首页', link: '/' },
-      { text: '分类', link: '/categories/' },
-      { text: '更新日志', link: '/posts' },
-      { text: '投稿指南', link: '/contributing' },
-      { text: '关于本站', link: '/about' }
-    ],
-
-    // 社交链接图标
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/jijinyun' }
-    ],
-
-    // 侧边栏导航
-    sidebar: {
-      // 当访问 /categories/ 路径时，显示这个侧边栏
-      '/categories/': [
-        {
-          text: '资源分类',
-          items: [
-            { text: '🛡️ 网络安全', link: '/categories/security' },
-            { text: '🖥️ 系统工具', link: '/categories/system' },
-            { text: '🤖 人工智能', link: '/categories/ai' },
-            { text: '🎬 影音娱乐', link: '/categories/media' },
-            { text: '🎮 游戏世界', link: '/categories/gaming' },
-            { text: '📚 学习阅读', link: '/categories/learning' },
-            { text: '📁 下载存储', link: '/categories/download' },
-            { text: '🛠️ 开发工具', link: '/categories/development' },
-            { text: '🎨 设计素材', link: '/categories/design' },
-            { text: '💼 效率办公', link: '/categories/productivity' },
-            { text: '📱 移动应用', link: '/categories/mobile' },
-            { text: '🌍 生活便民', link: '/categories/life' },
-            { text: '⁉️ 未分类', link: '/categories/misc' }
-          ]
+// 深度合并函数
+function deepMerge(target: any, source: any): any {
+  const output = { ...target }
+  
+  if (isObject(target) && isObject(source)) {
+    Object.keys(source).forEach(key => {
+      if (isObject(source[key])) {
+        if (!(key in target)) {
+          Object.assign(output, { [key]: source[key] })
+        } else {
+          output[key] = deepMerge(target[key], source[key])
         }
-      ],
-      '/posts/': [
-        {
-          text: '更新日志',
-          items: [
-            { text: '2024年09月', link: '/posts/2024-09' },
-            { text: '2024年08月', link: '/posts/2024-08' }
-          ]
-        }
-      ]
-    },
+      } else if (Array.isArray(source[key]) && Array.isArray(target[key])) {
+        // 对数组合并进行特殊处理（避免重复项）
+        output[key] = [...new Set([...target[key], ...source[key]])]
+      } else {
+        Object.assign(output, { [key]: source[key] })
+      }
+    })
+  }
+  
+  return output
+}
 
-    // 底部版权信息
-    footer: {
-      message: "Made with ❤️ by 工具派",
-      copyright: "Copyright © 2024 工具派 - 一个由社区驱动，专注于收录免费优质、合法、高效工具与资源的导航指南<br/>网站由VitePress驱动"
-    },
+// 辅助函数：检查是否为对象
+function isObject(item: any): boolean {
+  return (item && typeof item === 'object' && !Array.isArray(item))
+}
 
-    // 开启右侧的大纲导航
-    outline: 'deep',
-
-    // 编辑链接
-    editLink: {
-      pattern: "https://github.com/jijinyun/my-fmhy-site/edit/main/:path",
-      text: "在 GitHub 上编辑此页"
-    },
-
-    // 最后更新时间戳
-    lastUpdated: true,
-
-    // 搜索功能配置
-    search: {
-      provider: 'local'
+// 主配置
+export default defineConfig(async () => {
+  // 导入模板配置
+  const baseConfig = templateConfig
+  
+  // 尝试导入覆盖配置
+  let overrideConfig = {}
+  try {
+    // 使用动态导入，这样如果文件不存在也不会报错
+    overrideConfig = (await import('./config.override.mjs')).default
+    console.log('Override config loaded successfully')
+  } catch (error) {
+    console.warn('No override config found. Using template configuration only.')
+  }
+  
+  // 合并配置
+  const mergedConfig = deepMerge(baseConfig, overrideConfig)
+  
+  // 处理环境变量（如果有）
+  if (process.env.SITE_URL) {
+    mergedConfig.sitemap = mergedConfig.sitemap || {}
+    mergedConfig.sitemap.hostname = process.env.SITE_URL
+  }
+  
+  if (process.env.GITHUB_PROFILE) {
+    mergedConfig.themeConfig = mergedConfig.themeConfig || {}
+    mergedConfig.themeConfig.socialLinks = mergedConfig.themeConfig.socialLinks || []
+    
+    // 更新或添加GitHub社交链接
+    const githubIndex = mergedConfig.themeConfig.socialLinks.findIndex(
+      (link: any) => link.icon === 'github'
+    )
+    
+    if (githubIndex >= 0) {
+      mergedConfig.themeConfig.socialLinks[githubIndex].link = process.env.GITHUB_PROFILE
+    } else {
+      mergedConfig.themeConfig.socialLinks.push({
+        icon: 'github',
+        link: process.env.GITHUB_PROFILE
+      })
     }
   }
-}
+  
+  if (process.env.EDIT_LINK_PATTERN) {
+    mergedConfig.themeConfig = mergedConfig.themeConfig || {}
+    mergedConfig.themeConfig.editLink = mergedConfig.themeConfig.editLink || {}
+    mergedConfig.themeConfig.editLink.pattern = process.env.EDIT_LINK_PATTERN
+  }
+  
+  return mergedConfig
+})
